@@ -63,6 +63,13 @@ app.get('/bad', (req, res) => {
     });
 });
 
+app.get('/profolio', (req, res) => {
+    res.render('profolio.hbs', {
+        pageTitle: 'Profolio Page',
+
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`server is up on port 3000 ${port}`);
