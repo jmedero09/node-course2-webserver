@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//process stores i env varibables as key value pairs
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 
@@ -9,6 +12,9 @@ var app = express();
 //__dirname gives us the path to the folder node-web-server then we concatnate /public to give it access to the public folder
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
+
+//app.use is how we register middleware 
+//Order matters in middleware
 app.use((req, res, next) => {
     var now = new Date().toString();
     var log = now + req.method + req.url
@@ -58,6 +64,6 @@ app.get('/bad', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-    console.log('server is up on port 3000');
+app.listen(port, () => {
+    console.log(`server is up on port 3000 ${port}`);
 });
